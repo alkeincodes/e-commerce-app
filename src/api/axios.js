@@ -11,7 +11,7 @@ instance.interceptors.request.use(req => {
   //   req.headers.Authorization  = `Bearer ${token}`
   // }
 
-  console.log('@app: ', process.env.VUE_APP_API_URL)
+  console.log('@VUE_APP_API_URL: ', process.env.VUE_APP_API_URL)
 
   return req
 })
