@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: 'https://e-commerce-ohsso.ondigitalocean.app/staging'
+  baseURL: 'https://e-commerce-ohsso.ondigitalocean.app'
 })
 
 instance.interceptors.request.use(req => {
