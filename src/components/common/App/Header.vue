@@ -10,6 +10,7 @@
         <router-link to="#">Shop</router-link>
         <router-link to="#">Blog</router-link>
         <router-link to="#">Contact</router-link>
+        <router-link to="/login">Login</router-link>
         <div class="cart-items">
           <icon-cart />
           <div class="cart-items__counter">4</div>
