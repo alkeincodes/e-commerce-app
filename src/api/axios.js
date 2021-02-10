@@ -2,7 +2,7 @@ import axios from 'axios'
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: 'https://e-commerce-ohsso.ondigitalocean.app'
+  baseURL: process.env.VUE_APP_API_URL
 })
 
 instance.interceptors.request.use(req => {
@@ -10,6 +10,8 @@ instance.interceptors.request.use(req => {
   // if(token) {
   //   req.headers.Authorization  = `Bearer ${token}`
   // }
+
+  console.log('@app: ', process.env.VUE_APP_API_URL)
 
   return req
 })
