@@ -1,0 +1,32 @@
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 220px));
+    grid-gap: 18px;
+
+    .product-card {
+        background-color: #fff;
+        box-shadow: $box-shadow;
+        // padding: $padding;
+        cursor: pointer;
+        &__img {
+            height: 220px;
+            background-size: cover;
+        }
+        &__details {
+            padding: $padding * 2;
+
+            .el-rate {
+                margin-left: -4px;
+                &__icon {
+                    margin-right: 0;
+                }
+            }
+
+            .product-price {
+                margin: $margin 0 $margin * 2;
+                display: inline-block;
+                color: $warning;
+            }
+        }
+    }
+}
