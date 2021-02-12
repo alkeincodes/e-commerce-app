@@ -1,8 +1,8 @@
 <template>
   <div id="app">
-    <div :class="`${user ? user.utype : 'user'}-container`">
-      <admin-header v-if="authenticated && user.utype === 'admin'" />
-      <admin-sidebar v-if="authenticated && user.utype === 'admin'" />
+    <div :class="`${user && $route.name !== 'Index' ? user.utype : 'user'}-container`">
+      <admin-header v-if="authenticated && user.utype === 'admin' && $route.name !== 'Index'" />
+      <admin-sidebar v-if="authenticated && user.utype === 'admin' && $route.name !== 'Index'" />
       <div class="main-content">
         <router-view></router-view>
       </div>

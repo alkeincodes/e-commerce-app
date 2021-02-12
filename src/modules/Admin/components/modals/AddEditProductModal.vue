@@ -72,7 +72,7 @@ export default {
 
           // this code applied to make a duplicate data to prevent changing the original data from table when editing
           this.newProduct = JSON.parse(JSON.stringify(val))
-          console.log(this.newProduct)
+          this.newProduct.image = `${this.axios.defaults.baseURL}/product_images/${val.image}`
         } else {
           this.isEdit = false
           this.resetFields()
@@ -131,6 +131,7 @@ export default {
       reader.readAsDataURL(file)
     },
     finalizeRequest (message) {
+      this.isSaving = false
       this.$emit('close')
       this.$message({
         message,
@@ -143,12 +144,20 @@ export default {
           this.isSaving = true
           if (!this.isEdit) {
             this.axios.post('/api/create-product', this.newProduct).then(({ data }) => {
-              this.isSaving = false
+              const product = {
+                action: 'create',
+                data: data.product
+              }
+              this.$emit('update', product)
               this.finalizeRequest(data.message)
             })
           } else {
             this.axios.put(`/api/update-product/${this.newProduct.id}`, this.newProduct).then(({ data }) => {
-              this.$emit('update', data.product)
+              const product = {
+                action: 'update',
+                data: data.product
+              }
+              this.$emit('update', product)
               this.finalizeRequest(data.message)
             })
           }

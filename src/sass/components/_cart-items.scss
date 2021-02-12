@@ -1,0 +1,27 @@
+.cart-items {
+  &__main-container {
+    @include flexbox(row, center, flex-end);
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 100%;
+  }
+  &__drawer {
+    padding: $padding * 2 $padding * 4;
+    width: 50%;
+    background-color: #f7f7f7;
+    height: 100vh;
+  }
+
+  &__list {
+    margin-top: $margin * 4;
+    .item-list {
+      background: #fff;
+      width: 100%;
+      box-shadow: $box-shadow;
+      min-height: 50px;
+      border-radius: 4px;
+    }
+  }
+}

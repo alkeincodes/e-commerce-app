@@ -5,7 +5,9 @@ const namespaced = true
 
 const state = {
   authenticated: false,
-  user: null
+  user: null,
+  cartItems: JSON.parse(localStorage.getItem('cartItems')) || [],
+  counter: 0
 }
 
 const mutations = {
@@ -14,6 +16,12 @@ const mutations = {
   },
   SET_AUTHENTICATED (state, value) {
     state.authenticated = value
+  },
+  SET_CART (state, payload) {
+    state.cartItems.push(payload)
+    state.counter++
+
+    localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
   }
 }
 
@@ -59,7 +67,8 @@ const actions = {
 const getters = {
   isLoggedIn: (state) => state.isLoggedIn,
   authenticated: (state) => state.authenticated,
-  user: (state) => state.user
+  user: (state) => state.user,
+  cartItems: state => state.cartItems
 }
 
 export default {

@@ -22,10 +22,65 @@
                 }
             }
 
-            .product-price {
-                margin: $margin 0 $margin * 2;
-                display: inline-block;
-                color: $warning;
+            .product-prices {
+                @include flexbox(row, center, initial);
+                span {
+                    display: inline-block;
+                    &.price {
+                        margin: $margin * 2 0;
+                        display: inline-block;
+                        color: $warning;
+                    }
+        
+                    &.off {
+                        color: #ccc;
+                        text-decoration: line-through;
+                        margin-left: $margin;
+                        font-size: 13px;
+                    }
+                }
+            }
+        }
+    }
+
+    .product-show {
+        @include flexbox(row, initial, space-between);
+        &__left {
+            width: 50%;
+            img {
+                width: 100%;
+            }
+        }
+        &__right {
+            padding: 0 $padding * 4;
+            width: 50%;
+            text-align: left;
+            // @include flexbox(column, initial, space-between);
+
+            .order-actions {
+                span {
+                    display: inline-block;
+                    &.price {
+                        margin: $margin * 2 0;
+                        display: inline-block;
+                        color: $warning;
+                        font-size: 20px;
+                    }
+        
+                    &.off {
+                        color: #ccc;
+                        text-decoration: line-through;
+                        margin-left: $margin;
+                        font-size: 13px;
+                    }
+                }
+
+                .cta {
+                    margin-top: 50px;
+                    button {
+                        margin-right: $margin;
+                    }
+                }
             }
         }
     }

@@ -20,7 +20,7 @@
       <el-table-column label="Image">
         <template slot-scope="props">
           <!-- <img style="width: 150px;" :src="`${axios.defaults.baseURL}/product_images/${props.row.image}`" :alt="props.row.image"> -->
-          <img style="width: 150px;" :src="props.row.image" :alt="props.row.image">
+          <img style="width: 150px;" :src="`${axios.defaults.baseURL}/product_images/${props.row.image}`" :alt="props.row.image">
         </template>
       </el-table-column>
       <el-table-column
@@ -106,7 +106,6 @@ export default {
       this.productModalState = !this.productModalState
     },
     handleDelete (index, row) {
-      console.log(index, row)
       this.$confirm('This will permanently delete the product. Continue?', 'Warning', {
         confirmButtonText: 'Yes',
         cancelButtonText: 'Cancel',
@@ -127,10 +126,17 @@ export default {
       this.selectedProduct = null
       this.productModalState = !this.productModalState
     },
-    onDataUpdate (data) {
-      this.allProducts = this.allProducts.map(({ id }) => {
-        if (id === data.id) return data
-      })
+    onDataUpdate (product) {
+      switch (product.action) {
+        case 'create':
+          this.allProducts.unshift(product.data)
+          break
+        case 'update':
+          this.allProducts = this.allProducts.map(({ id }) => {
+            if (id === product.data.id) return product.data
+          })
+          break
+      }
     }
   }
 }

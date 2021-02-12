@@ -1,7 +1,7 @@
 .user-container {
     padding: 25px 50px;
 }
-.btn-buy {
+.site-btn {
     display: inline-block;
     font-weight: 400;
     line-height: 1.5;
@@ -11,18 +11,40 @@
     vertical-align: middle;
     cursor: pointer;
     user-select: none;
-    background-color: transparent;
     border: 1px solid #000;
     padding: $padding / 1.5 $padding * 2;
     font-size: 1rem;
     transition: all 0.3s ease-in-out;
-
+}
+.btn-buy {
+    background-color: transparent;
     &:hover {
         background-color: #000;
         color: #fff;
     }
 }
 
+.buy-now {
+    background-color: $warning;
+    border-color: darken($warning, 10%);
+    color: white;
+
+    &:hover {
+        background-color: darken($warning, 10%);
+        color: #fff;
+        border-color: darken($warning, 10%);
+    }
+}
+
+.add-cart {
+    background-color: transparent;
+
+    &:hover {
+        background-color: $warning;
+        color: #fff;
+        border-color: darken($warning, 10%);
+    }
+}
 
 .hero-banner {
     @include flexbox(row, center, space-between);
